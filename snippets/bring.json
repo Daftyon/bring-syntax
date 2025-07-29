@@ -1,0 +1,165 @@
+{
+  "Basic App Configuration": {
+    "prefix": "app",
+    "body": [
+      "app = {",
+      "\tname = \"${1:MyApp}\" @version=\"${2:1.0.0}\"",
+      "\tport = ${3:8080} @min=1024 @max=65535",
+      "\tdebug = ${4:false}",
+      "\t$0",
+      "}"
+    ],
+    "description": "Basic application configuration template"
+  },
+  "Database Configuration": {
+    "prefix": "database",
+    "body": [
+      "database = {",
+      "\thost = \"${1:localhost}\"",
+      "\tport = ${2:5432} @default=5432",
+      "\tname = \"${3:myapp_db}\"",
+      "\tusername = \"${4:user}\"",
+      "\tpassword = \"${5:password}\" @required=true",
+      "\ttimeout = ${6:30} @unit=\"seconds\"",
+      "\t$0",
+      "}"
+    ],
+    "description": "Database configuration template"
+  },
+  "Server Configuration": {
+    "prefix": "server",
+    "body": [
+      "server = {",
+      "\thost = \"${1:0.0.0.0}\" @env=\"HOST\"",
+      "\tport = ${2:3000} @env=\"PORT\" @default=3000",
+      "\tworkers = ${3:4} @min=1 @max=16",
+      "\tssl = {",
+      "\t\tenabled = ${4:false}",
+      "\t\tcert = \"${5:/path/to/cert.pem}\"",
+      "\t\tkey = \"${6:/path/to/key.pem}\"",
+      "\t}",
+      "\t$0",
+      "}"
+    ],
+    "description": "Server configuration template"
+  },
+  "Schema Definition": {
+    "prefix": "schema",
+    "body": [
+      "schema ${1:ModelName} {",
+      "\tid = number @min=1 @required=true",
+      "\tname = string @maxLength=${2:50} @required=true",
+      "\temail = string @format=\"email\"",
+      "\tactive = boolean @default=true",
+      "\t$0",
+      "}"
+    ],
+    "description": "Schema definition template"
+  },
+  "User Schema": {
+    "prefix": "user-schema",
+    "body": [
+      "schema User {",
+      "\tid = number @min=1 @required=true",
+      "\tusername = string @minLength=3 @maxLength=20 @required=true",
+      "\temail = string @format=\"email\" @required=true",
+      "\tage = number @min=13 @max=120",
+      "\trole = string @enum=[\"admin\", \"user\", \"guest\"] @default=\"user\"",
+      "\tactive = boolean @default=true",
+      "\t$0",
+      "}"
+    ],
+    "description": "User schema template"
+  },
+  "Package Definition": {
+    "prefix": "package",
+    "body": [
+      "package = {",
+      "\tname = \"${1:package-name}\" @semver=true",
+      "\tversion = \"${2:1.0.0}\"",
+      "\tauthor = \"${3:Your Name}\"",
+      "\tdescription = \"${4:Package description}\"",
+      "\t",
+      "\tdependencies = [",
+      "\t\t\"${5:dependency@^1.0.0}\"",
+      "\t\t$0",
+      "\t]",
+      "\t",
+      "\trepository = \"${6:https://github.com/user/repo}\"",
+      "\tlicense = \"${7:MIT}\"",
+      "}"
+    ],
+    "description": "EasierLang package definition template"
+  },
+  "API Configuration": {
+    "prefix": "api",
+    "body": [
+      "api = {",
+      "\tbaseUrl = \"${1:https://api.example.com}\" @secure=true",
+      "\ttimeout = ${2:5000} @unit=\"milliseconds\"",
+      "\tretries = ${3:3} @max=5",
+      "\t",
+      "\tendpoints = {",
+      "\t\tusers = \"${4:/api/v1/users}\" @auth=\"required\"",
+      "\t\tposts = \"${5:/api/v1/posts}\" @cache=300",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "API configuration template"
+  },
+  "Logging Configuration": {
+    "prefix": "logging",
+    "body": [
+      "logging = {",
+      "\tlevel = \"${1:info}\" @enum=[\"debug\", \"info\", \"warn\", \"error\"]",
+      "\tfile = \"${2:/var/log/app.log}\" @path=true",
+      "\trotate = ${3:true}",
+      "\tmaxSize = \"${4:10MB}\" @format=\"size\"",
+      "\tmaxFiles = ${5:5} @min=1",
+      "\t$0",
+      "}"
+    ],
+    "description": "Logging configuration template"
+  },
+  "Array with Objects": {
+    "prefix": "array-obj",
+    "body": [
+      "${1:items} = [",
+      "\t{",
+      "\t\t${2:key} = \"${3:value}\"",
+      "\t\t$0",
+      "\t}",
+      "]"
+    ],
+    "description": "Array containing objects template"
+  },
+  "Comment Block": {
+    "prefix": "comment",
+    "body": [
+      "# ====================================",
+      "# ${1:Section Title}",
+      "# ====================================",
+      "$0"
+    ],
+    "description": "Comment block template"
+  },
+  "Environment Variables": {
+    "prefix": "env",
+    "body": [
+      "environment = {",
+      "\tdevelopment = {",
+      "\t\tdebug = true",
+      "\t\tlog_level = \"debug\"",
+      "\t}",
+      "\t",
+      "\tproduction = {",
+      "\t\tdebug = false",
+      "\t\tlog_level = \"error\"",
+      "\t}",
+      "\t$0",
+      "}"
+    ],
+    "description": "Environment-specific configuration"
+  }
+}

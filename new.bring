@@ -1,0 +1,45 @@
+# Application Configuration
+app = {
+    name = "MyApp" @version="1.0"
+    port = 8080 @min=1024 @max=65535
+    debug = false
+    database = {
+        url = "postgres://user:pass@localhost:5432/db"
+        timeout = 30 @unit="seconds"
+    }
+}
+
+# Schema Definition
+schema User {
+    id = number @min=1
+    name = string @maxLength=50
+    email = string @format="email"
+}
+
+# User Data
+users = [
+    { id = 1, name = "Alice", email = "alice@example.com" },
+    { id = 2, name = "Bob", email = "bob@example.com" }
+]# Application Configuration
+app = {
+    name = "MyApp" @version="1.0"
+    port = 8080 @min=1024 @max=65535
+    debug = false
+    database = {
+        url = "postgres://user:pass@localhost:5432/db"
+        timeout = 30 @unit="seconds"
+    }
+}
+
+# Schema Definition
+schema User {
+    id = number @min=1
+    name = string @maxLength=50
+    email = string @format="email"
+}
+
+# User Data
+users = [
+    { id = 1, name = "Alice", email = "alice@example.com" },
+    { id = 2, name = "Bob", email = "bob@example.com" }
+]

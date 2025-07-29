@@ -1,20 +1,66 @@
 {
   "name": "bring-syntax",
-  "version": "0.0.1",
+  "displayName": "Bring Language Support",
+  "description": "Syntax highlighting and language support for Bring configuration files",
+  "version": "1.0.0",
+  "publisher": "daftyon",
   "engines": {
-    "vscode": "^1.75.0"
+    "vscode": "^1.74.0"
   },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "bring",
+    "configuration",
+    "syntax"
+  ],
+  "main": "./out/extension.js",
   "contributes": {
-    "languages": [{
-      "id": "bring",
-      "aliases": ["Bring"],
-      "extensions": [".bring"],
-      "configuration": "./syntaxes/bring.tmLanguage.json"
-    }],
-    "grammars": [{
-      "language": "bring",
-      "scopeName": "source.bring",
-      "path": "./syntaxes/bring.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "bring",
+        "aliases": [
+          "Bring",
+          "bring"
+        ],
+        "extensions": [
+          ".bring"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "bring",
+        "scopeName": "source.bring",
+        "path": "./syntaxes/bring.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "bring.validateFile",
+        "title": "Validate Bring File",
+        "category": "Bring"
+      },
+      {
+        "command": "bring.formatDocument",
+        "title": "Format Bring Document",
+        "category": "Bring"
+      }
+    ]
+  },
+  "activationEvents": [
+    "onLanguage:bring"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.x",
+    "@types/vscode": "^1.74.0",
+    "typescript": "^4.9.0"
   }
 }

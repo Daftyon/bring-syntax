@@ -1,12 +1,85 @@
 {
+  "name": "Bring",
   "scopeName": "source.bring",
   "fileTypes": ["bring"],
   "patterns": [
-    {"match": "#.*$", "name": "comment.line.bring"},
-    {"match": "\\b(schema)\\b", "name": "keyword.control.bring"},
-    {"match": "@\\w+", "name": "entity.other.attribute-name.bring"},
-    {"match": "\\b(true|false|null)\\b", "name": "constant.language.bring"},
-    {"match": "-?\\d+\\.?\\d*", "name": "constant.numeric.bring"},
-    {"match": "\"(\\\\\"|[^\"])*\"", "name": "string.quoted.double.bring"}
+    {
+      "name": "comment.line.number-sign.bring",
+      "match": "#.*$"
+    },
+    {
+      "name": "string.quoted.double.bring",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.bring",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
+      "name": "string.quoted.single.bring", 
+      "begin": "'",
+      "end": "'",
+      "patterns": [
+        {
+          "name": "constant.character.escape.bring",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
+      "name": "constant.numeric.bring",
+      "match": "\\b-?\\d+(\\.\\d+)?\\b"
+    },
+    {
+      "name": "constant.language.boolean.true.bring",
+      "match": "\\btrue\\b"
+    },
+    {
+      "name": "constant.language.boolean.false.bring",
+      "match": "\\bfalse\\b"
+    },
+    {
+      "name": "constant.language.null.bring",
+      "match": "\\bnull\\b"
+    },
+    {
+      "name": "keyword.control.bring",
+      "match": "\\bschema\\b"
+    },
+    {
+      "name": "support.type.bring",
+      "match": "\\b(string|number|integer|float|boolean|array|object)\\b"
+    },
+    {
+      "name": "entity.other.attribute-name.bring",
+      "match": "@\\w+"
+    },
+    {
+      "name": "variable.other.property.bring",
+      "match": "\\b[a-zA-Z_][a-zA-Z0-9_]*(?=\\s*=)"
+    },
+    {
+      "name": "keyword.operator.assignment.bring",
+      "match": "="
+    },
+    {
+      "name": "punctuation.definition.dictionary.begin.bring",
+      "match": "\\{"
+    },
+    {
+      "name": "punctuation.definition.dictionary.end.bring",
+      "match": "\\}"
+    },
+    {
+      "name": "punctuation.definition.array.begin.bring",
+      "match": "\\["
+    },
+    {
+      "name": "punctuation.definition.array.end.bring",
+      "match": "\\]"
+    }
   ]
 }
