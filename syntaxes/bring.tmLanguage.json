@@ -1,0 +1,12 @@
+{
+  "scopeName": "source.bring",
+  "fileTypes": ["bring"],
+  "patterns": [
+    {"match": "#.*$", "name": "comment.line.bring"},
+    {"match": "\\b(schema)\\b", "name": "keyword.control.bring"},
+    {"match": "@\\w+", "name": "entity.other.attribute-name.bring"},
+    {"match": "\\b(true|false|null)\\b", "name": "constant.language.bring"},
+    {"match": "-?\\d+\\.?\\d*", "name": "constant.numeric.bring"},
+    {"match": "\"(\\\\\"|[^\"])*\"", "name": "string.quoted.double.bring"}
+  ]
+}
